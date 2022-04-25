@@ -1,7 +1,7 @@
 package com.bridgelab.Assignment_14_LinkedList;
 /*
  * @author : Atik
- * Ability to create Linked List by adding 30 and 56 to 70
+ * Ability to create Linked List by appending 30 and 56 to 70
  */class Node {
 	    public int data;
 	    public Node next;
@@ -29,6 +29,19 @@ package com.bridgelab.Assignment_14_LinkedList;
 		        }
 		    }
 
+		    //Insert Data from Last
+		    public void insertLast(int data) {
+		        Node newNode = new Node(data);
+		        if(tail == null) {
+		            head = newNode;
+		            tail = newNode;
+		        } else {
+		            tail.next = newNode;
+		            tail = newNode;
+		        }
+		    }
+
+
 		    //Display Node in Linked List
 		    public void displayLinkedList() {
 		        if(head == null) {
@@ -50,9 +63,9 @@ package com.bridgelab.Assignment_14_LinkedList;
 	        LinkedListData linkedList = new LinkedListData();
 
 	        //Insert 70, 50, 36 in Linked List Nodes
-	        linkedList.insertFirst(70);
-	        linkedList.insertFirst(30);
-	        linkedList.insertFirst(56);
+	        linkedList.insertLast(56);
+	        linkedList.insertLast(30);
+	        linkedList.insertLast(70);
 
 	        //Showing Linked List Data
 	        linkedList.displayLinkedList();
