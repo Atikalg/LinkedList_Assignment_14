@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 /*
  * @author : Atik
- *  Ability to delete the first element in the LinkedList
- *  Write pop method.
+ *  Ability to delete the Last element in the LinkedList
+ *  Write pop last method.
  */
 class Node {
 	    public int data;
