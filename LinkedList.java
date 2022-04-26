@@ -79,6 +79,17 @@ class Node {
 		            head = head.next;
 		        }
 		    }
+		    //Method to Delete Last Node from Linked List
+		    public void popLast() {
+		        if(head == null) {
+		            System.out.println("Linked List is Empty.");
+		        } else {
+		            Node second_Last = head;
+		            while(second_Last.next.next != null)
+		                second_Last = second_Last.next;
+		                second_Last.next = null;
+		        }
+		    }
 		    //Display Node in Linked List
 		    public void displayLinkedList() {
 		        if(head == null) {
@@ -104,7 +115,7 @@ class Node {
 
 	        int choice;
 	        do {
-	            System.out.println("1. INSERT FIRST \n2. INSERT LAST \n3. DISPLAY LIST \n4. INSERT AT Nth POSITION \n5. Delete data \n6. EXIT \nEnter the Choice for Operation : ");
+	            System.out.println("1. Insert First \n2. Insert Last \n3. Display list \n4. Insert at Nth position \n5. Delete first element \n6. Delete last element \n7. EXIT \nEnter the Choice for Operation : ");
 	            choice = sc.nextInt();
 
 	            switch (choice) {
@@ -132,8 +143,11 @@ class Node {
 	                case 5:
 	                    linkedList.pop();
 	                    break;
+	                case 6:
+	                    linkedList.popLast();
+	                    break;
 	            }
-	        }while(choice != 6);
+	        }while(choice != 7);
 	    }
 }
 	
