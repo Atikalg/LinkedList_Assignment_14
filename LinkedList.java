@@ -4,9 +4,10 @@ import java.util.Scanner;
 
 /*
  * @author : Atik
- * Ability to insert 30 between 56 and 70
- * Final Sequence: 56->30->70
- */class Node {
+ *  Ability to delete the first element in the LinkedList
+ *  Write pop method.
+ */
+class Node {
 	    public int data;
 	    public Node next;
 
@@ -16,7 +17,7 @@ import java.util.Scanner;
 	        this.next = null;
 	    }
 	}
-
+	//Operation and data storing 
 	class LinkedListData {
 		 int location = 0;
 
@@ -66,9 +67,16 @@ import java.util.Scanner;
 		                    temp.next = newNode;
 		                    newNode.next = nextNode;
 		                }
-//		                System.out.print(temp.data + " -> ");
 		                temp = temp.next;
 		            }
+		        }
+		    }
+		    //Method to Delete First Node from Linked List
+		    public void pop() {
+		        if(head == null) {
+		            System.out.println("Linked List is Empty.");
+		        } else {
+		            head = head.next;
 		        }
 		    }
 		    //Display Node in Linked List
@@ -84,6 +92,7 @@ import java.util.Scanner;
 		        }
 		    }
 		}
+	
 	public class LinkedList {
 	    public static void main(String[] args) {
 	    	 //Welcome Message
@@ -95,7 +104,7 @@ import java.util.Scanner;
 
 	        int choice;
 	        do {
-	            System.out.println("1. INSERT FIRST \n2. INSERT LAST \n3. DISPLAY LIST \n4. INSERT AT Nth POSITION \n5. EXIT \nEnter the Choice for Operation : ");
+	            System.out.println("1. INSERT FIRST \n2. INSERT LAST \n3. DISPLAY LIST \n4. INSERT AT Nth POSITION \n5. Delete data \n6. EXIT \nEnter the Choice for Operation : ");
 	            choice = sc.nextInt();
 
 	            switch (choice) {
@@ -111,6 +120,7 @@ import java.util.Scanner;
 	                    break;
 	                case 3:
 	                    linkedList.displayLinkedList();
+	                    System.out.println();
 	                    break;
 	                case 4:
 	                    System.out.println("Enter the Data After which to Insert New Data : ");
@@ -119,8 +129,11 @@ import java.util.Scanner;
 	                    int data = sc.nextInt();
 	                    linkedList.insertNthPosition(data,nthData);
 	                    break;
+	                case 5:
+	                    linkedList.pop();
+	                    break;
 	            }
-	        }while(choice != 5);
+	        }while(choice != 6);
 	    }
 }
 	
