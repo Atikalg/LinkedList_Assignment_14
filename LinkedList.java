@@ -1,7 +1,11 @@
 package com.bridgelab.Assignment_14_LinkedList;
+
+import java.util.Scanner;
+
 /*
  * @author : Atik
- * Ability to create Linked List by appending 30 and 56 to 70
+ * Ability to insert 30 between 56 and 70
+ * Final Sequence: 56->30->70
  */class Node {
 	    public int data;
 	    public Node next;
@@ -14,7 +18,9 @@ package com.bridgelab.Assignment_14_LinkedList;
 	}
 
 	class LinkedListData {
-		 Node head;
+		 int location = 0;
+
+		    Node head;
 		    Node tail;
 		    //Insert Data in New Node
 		    public void insertFirst(int data) {
@@ -27,6 +33,8 @@ package com.bridgelab.Assignment_14_LinkedList;
 		            newNode.next = head;
 		            head = newNode;
 		        }
+		        location++;
+		        System.out.println("Location:"+location);
 		    }
 
 		    //Insert Data from Last
@@ -39,9 +47,30 @@ package com.bridgelab.Assignment_14_LinkedList;
 		            tail.next = newNode;
 		            tail = newNode;
 		        }
+		        location++;
+		        System.out.println("Location: "+location);
 		    }
 
-
+		    //Insert New Node after Given Node
+		    public void insertNthPosition(int data,int nthdata) {
+		        Node newNode = new Node(data);
+		        if(head == null) {
+		            head = newNode;
+		            tail = newNode;
+		        } else {
+		            Node temp = head;
+		            Node nextNode;
+		            while (temp != null) {
+		                nextNode = temp.next;
+		                if(temp.data == nthdata) {
+		                    temp.next = newNode;
+		                    newNode.next = nextNode;
+		                }
+//		                System.out.print(temp.data + " -> ");
+		                temp = temp.next;
+		            }
+		        }
+		    }
 		    //Display Node in Linked List
 		    public void displayLinkedList() {
 		        if(head == null) {
@@ -57,18 +86,41 @@ package com.bridgelab.Assignment_14_LinkedList;
 		}
 	public class LinkedList {
 	    public static void main(String[] args) {
-	    	  //Welcome Message
-	        System.out.println("Welcome to LinkedList Data Structures Problem.");
+	    	 //Welcome Message
+	        System.out.println("Welcome to LinkedList Data Structures Problems.");
+
+	        Scanner sc = new Scanner(System.in);
 
 	        LinkedListData linkedList = new LinkedListData();
 
-	        //Insert 70, 50, 36 in Linked List Nodes
-	        linkedList.insertLast(56);
-	        linkedList.insertLast(30);
-	        linkedList.insertLast(70);
+	        int choice;
+	        do {
+	            System.out.println("1. INSERT FIRST \n2. INSERT LAST \n3. DISPLAY LIST \n4. INSERT AT Nth POSITION \n5. EXIT \nEnter the Choice for Operation : ");
+	            choice = sc.nextInt();
 
-	        //Showing Linked List Data
-	        linkedList.displayLinkedList();
+	            switch (choice) {
+	                case 1:
+	                    System.out.println("Enter the Data to Insert at First : ");
+	                    int dataFirst = sc.nextInt();
+	                    linkedList.insertFirst(dataFirst);
+	                    break;
+	                case 2:
+	                    System.out.println("Enter the Data to Insert at Last : ");
+	                    int dataLast = sc.nextInt();
+	                    linkedList.insertLast(dataLast);
+	                    break;
+	                case 3:
+	                    linkedList.displayLinkedList();
+	                    break;
+	                case 4:
+	                    System.out.println("Enter the Data After which to Insert New Data : ");
+	                    int nthData = sc.nextInt();
+	                    System.out.println("Enter the Data : ");
+	                    int data = sc.nextInt();
+	                    linkedList.insertNthPosition(data,nthData);
+	                    break;
+	            }
+	        }while(choice != 5);
 	    }
 }
 	
